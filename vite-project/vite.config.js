@@ -13,6 +13,7 @@ export default {
   build: {
     emptyOutDir: true, // Esto vaciará el directorio de salida antes de construir
     rollupOptions: {
+        external: ['bootstrap'],
         /*
             Opciones de configuración de Rollup externas, serán mergeadas con la configuracion
             interna de Rollup de Vite.
