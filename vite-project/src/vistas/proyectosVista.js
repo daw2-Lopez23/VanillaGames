@@ -155,6 +155,57 @@ export default {
     // Ocultamos el botón de subir proyecto si el rol es registrado
     if (usuario.rol === 'registrado') {
       document.querySelector('#botonSubirProyecto').classList.add('disabled')
-    } 
+    }
+
+    document.querySelector('.vistaTabla').addEventListener('click', (boton) => {
+        console.log('vistaTabla');
+      })
+  
+      document.querySelector('.vistaTarjetas').addEventListener('click', (boton) => {
+        console.log('vistaTarjetas');
+      })
+
+    
+        // ####################################################################
+    // *** SELECCIÓN DE VISTA EN FORMATO TABLA O TARJETAS ***
+    // ####################################################################
+
+    // Selección vista tabla
+    document.querySelector('.vistaTabla').addEventListener('click', (boton) => {
+        // Lineas originales del html para los tabs:
+        // <div class="col-12 d-none d-xl-block" style="overflow-x: auto">
+        // <div class="d-xl-none row">
+  
+        // Pinta el boton de verde
+        boton.target.classList.add('btn-success')
+  
+        // Pinta el otro botón de gris y elimina el verde
+        const botonTarjeta = document.querySelector('.vistaTarjetas')
+        botonTarjeta.classList.remove('btn-success')
+        botonTarjeta.classList.add('btn-secondary')
+  
+        // Muestra y oculta los tabs
+        document.querySelector('#tabTabla').setAttribute('class', 'col-12 d-block')
+        document.querySelector('#tabTarjetas').setAttribute('class', 'd-none')
+      })
+  
+      // Selección vista tarjetas
+      document.querySelector('.vistaTarjetas').addEventListener('click', (boton) => {
+        console.log('vistaTarjetas')
+  
+        // Pinta el boton de verde
+        boton.target.classList.add('btn-success')
+  
+        // Pinta el otro botón de gris y elimina el verde
+        const botonTabla = document.querySelector('.vistaTabla')
+        botonTabla.classList.remove('btn-success')
+        botonTabla.classList.add('btn-secondary')
+  
+        // Muestra y oculta los tabs
+        document.querySelector('#tabTabla').setAttribute('class', 'd-none')
+        document.querySelector('#tabTarjetas').setAttribute('class', 'row')
+      })
+    
+
 }
 }
