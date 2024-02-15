@@ -206,6 +206,37 @@ export default {
         document.querySelector('#tabTarjetas').setAttribute('class', 'row')
       })
     
+        // ####################################################################
+    // *** FILTRO PARA BUSCADOR ***
+    // ####################################################################
+
+    // Capturamos el input de búsqueda
+    const inputBusqueda = document.getElementById('inputBusqueda')
+
+    // Agregamos un evento de escucha para el evento de entrada en el input de búsqueda
+    inputBusqueda.addEventListener('input', () => {
+      // Capturamos el texto de búsqueda del input, conviértelo a minúsculas y elimina espacios en blanco al principio y al final
+      const textoBusqueda = inputBusqueda.value.toLowerCase().trim()
+
+      // Filtramos los proyectos que coinciden con el texto de búsqueda en cualquier campo
+      const proyectosFiltrados = datos.filter(proyecto => {
+        // Itera sobre las propiedades (campos) de cada proyecto
+        for (const key in proyecto) {
+          // Obtenemos el valor del campo actual
+          const valorCampo = proyecto[key]
+          // Verificamos si el valor del campo es una cadena y si contiene el texto de búsqueda
+          if (typeof valorCampo === 'string' && valorCampo.toLowerCase().includes(textoBusqueda)) {
+            // Si hay coincidencia, devuelve true para incluir el proyecto en la lista filtrada
+            return true
+          }
+        }
+        // Si no se encontró coincidencia en ningún campo, devuelve false para excluir el proyecto
+        return false
+      })
+      // Volvemos a pintar los datos con los proyectos filtrados por el buscador
+      pintaTabla(proyectosFiltrados)
+      pintaTarjetas(proyectosFiltrados)
+    })
 
 }
 }
