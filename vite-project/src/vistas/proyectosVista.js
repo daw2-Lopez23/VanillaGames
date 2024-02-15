@@ -37,7 +37,7 @@ export default {
                 </div>
                 
             </div>`,
-        script: (urlAvatar, urlInputAvatar, user_id) => {    
+        script: () => {    
         const pintaTabla = (proyectos) => {
         let tbodyProyectos = ''
         // Para cada proyecto del array 'proyectos'
@@ -82,5 +82,62 @@ export default {
       
       // Ejecutamos la función
       pintaTabla(proyectos)
+
+      
+      const pintaTarjetas = (proyectos) => {
+        let tarjetasProyectos = ''
+        // Para cada proyecto del array 'proyectos'
+        proyectos.forEach(proyecto => {
+        // sumamos un tr con los datos del proyecto
+          tarjetasProyectos += // html
+        `
+        <!-- tarjeta  -->
+        <div class="col-12 col-lg-6">
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div
+                class="col-4"
+                style="
+                  background-image: url(${proyecto.imagen || 'images/imagenVacia.png'});
+                  background-position: center;
+                  background-size: cover;
+                "
+              ></div>
+              <div class="col-8">
+                <div class="card-body">
+                  <h5 class="card-title">${proyecto.nombre}</h5>
+                  <p class="card-text">
+                    ${proyecto.descripcion}
+                  </p>
+                  <p class="small m-0 text-end text-italic">Autor: ${proyecto.nombre_usuario} ${proyecto.apellidos_usuario}</p>
+                  <p class="small text-end text-italic">Fecha: ${proyecto.created_at}</p>
+      
+                  <a class="btn btn-sm btn-outline-primary" href="${proyecto.enlace}"><i class="bi bi-link"></i></a>
+                  <a class="btn btn-sm btn-outline-primary" href="${proyecto.repositorio}"><i class="bi bi-folder-symlink"></i></a>
+                  <a class="btn btn-sm btn-success" href="#">${proyecto.estado}</a>
+                  <a
+                    data-user_id = ${proyecto.user_id}
+                    class="d-none d-sm-inline btn btn-sm btn-outline-primary bi bi-pencil"
+                  ></a>
+                  <a
+                    data-user_id = ${proyecto.user_id}
+                    class="d-none d-sm-inline btn btn-sm btn-outline-danger bi bi-trash3"
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+        `
+        })
+        
+        document.querySelector('#tabTarjetas').innerHTML = tarjetasProyectos
+      }
+      
+      // ####################################################################
+      // Función para pintar tarjetas
+      // ####################################################################
+      
+      pintaTarjetas(proyectos)
 }
 }
