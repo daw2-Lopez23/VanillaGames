@@ -9,6 +9,7 @@ async function cargarVista () {
   const vista = componente.default  
   // Inyectamos la vista home
   document.querySelector('main').innerHTML = vista.template
+  vista.script()
 }
 cargarVista()
 
@@ -17,3 +18,4 @@ document.querySelector('header').innerHTML = header.template
 
 //Inyectamos el componente footer
 document.querySelector('footer').innerHTML = footer.template
+

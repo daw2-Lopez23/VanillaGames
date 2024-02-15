@@ -32,6 +32,12 @@ export default {
   server: {
     /*port: 8080, */ // Podemos definir el puerto de salida
     hot: true
+  },
+
+  publicDir: 'assets',
+  server: {
+    /* port: 8080, */ // Podemos definir el puerto de salida
+    hot: true
   }
   
 }
