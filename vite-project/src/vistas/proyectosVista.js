@@ -35,7 +35,7 @@ export default {
                         <i class="bi bi-pencil"></i>
                     </button>
                 </div>
-                
+                <a href="#/proyectoNuevo" class="btn btn-primary w-100 router-link">Subir proyecto</a>
             </div>`,
         script: () => {    
         const pintaTabla = (proyectos) => {
@@ -83,7 +83,7 @@ export default {
       // Ejecutamos la función
       pintaTabla(proyectos)
 
-      
+
       const pintaTarjetas = (proyectos) => {
         let tarjetasProyectos = ''
         // Para cada proyecto del array 'proyectos'
@@ -139,5 +139,18 @@ export default {
       // ####################################################################
       
       pintaTarjetas(proyectos)
+
+
+      
+    // ####################################################################
+    // Mostrar/ocultar botón 'subir proyecto'
+    // ####################################################################
+
+    // Capturamos los datos del usuario logueado
+    const usuario = ls.getUsuario()
+    // Ocultamos el botón de subir proyecto si el rol es registrado
+    if (usuario.rol === 'registrado') {
+      document.querySelector('#botonSubirProyecto').classList.add('disabled')
+    } 
 }
 }
