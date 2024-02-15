@@ -35,6 +35,13 @@ export default {
                         <i class="bi bi-pencil"></i>
                     </button>
                 </div>
+                <button class="btn btn-secondary me-2 bi bi-grid-3x3-gap vistaTabla">
+                </button>
+                <button class="btn btn-secondary me-2 bi bi-list vistaTarjetas">
+                </button>
+
+
+
                 <a href="#/proyectoNuevo" class="btn btn-primary w-100 router-link">Subir proyecto</a>
             </div>`,
         script: () => {    
@@ -134,9 +141,6 @@ export default {
         document.querySelector('#tabTarjetas').innerHTML = tarjetasProyectos
       }
       
-      // ####################################################################
-      // Función para pintar tarjetas
-      // ####################################################################
       
       pintaTarjetas(proyectos)
 
