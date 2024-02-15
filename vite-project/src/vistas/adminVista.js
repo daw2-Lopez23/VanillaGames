@@ -125,5 +125,6 @@ export default {
                         </table>
                     </div>
                 </div>
-            </div>`
+            </div>`,
+            
 }
