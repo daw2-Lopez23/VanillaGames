@@ -238,5 +238,19 @@ export default {
       pintaTarjetas(proyectosFiltrados)
     })
 
+        // ####################################################################
+    // Borrar datos del input del buscador al hacer click en 'x'
+    // ####################################################################
+
+    document.querySelector('#borrarBuscador').addEventListener('click', () => {
+        // Borramos contenido del buscador
+        inputBusqueda.value = ''
+        // Actualizamos array con todos los proyectos
+        // const proyectosFiltrados = datos
+        // Actualizamos los datos en el panel central
+        pintaTabla(datos)
+        pintaTarjetas(datos)
+      })
+
 }
 }
