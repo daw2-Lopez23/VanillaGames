@@ -252,5 +252,30 @@ export default {
         pintaTarjetas(datos)
       })
 
+    // ####################################################################
+    // Vista 'Todos los proyectos' / 'Mis proyectos'
+    // ####################################################################
+
+    // Definimos que por defecto se muestran 'mis proyectos'
+    let misProyectos = false
+
+    // *** Detectamos si se cambia de proyectos a mis proyectos al hacer click en las pestañas ***
+    document.querySelector('.nav-tabs').addEventListener('click', (event) => {
+      // Si click en 'Mis proyectos' cambiamos pestaña activa
+      if (event.target.classList.contains('fichaMisProyectos')) {
+        document.querySelector('.fichaMisProyectos').classList.add('active')
+        document.querySelector('.fichaProyectos').classList.remove('active')
+        misProyectos = true
+      } else {
+        // Si click en 'Todos los proyectos' cambiamos pestaña activa
+        document.querySelector('.fichaProyectos').classList.add('active')
+        document.querySelector('.fichaMisProyectos').classList.remove('active')
+        misProyectos = false
+      }
+      // Actualizamos los datos en el panel central
+      pintaTabla(datos)
+      pintaTarjetas(datos)
+    })
+
 }
 }
