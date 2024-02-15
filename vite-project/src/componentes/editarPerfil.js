@@ -91,8 +91,27 @@ export const editarPerfil = {
       </form>
     </div>
     `,
-    script: () => {
-      console.log('script de modal editar perfil cargado')
+    script: (urlAvatar, urlInputAvatar, user_id) => {
+      console.log('modal editar imagen perfil cargado:', urlAvatar)
+      document.querySelector('#urlImagenUsuario').value = urlAvatar
+      // Capturamos la url del input y actualizamos la imagen
+      const imagenUsuario = document.querySelector('#imagenUsuario')
+      imagenUsuario.style.backgroundImage = `url(${urlAvatar})`
+  
+      // modificación de imagen al cambiar input
+      document.querySelector('#urlImagenUsuario').addEventListener('input', () => {
+        urlAvatar = document.querySelector('#urlImagenUsuario').value
+        imagenUsuario.style.backgroundImage = `url(${urlAvatar})`
+      })
+  
+      // Boton enviar
+      document.querySelector('#botonActualizarImagen').addEventListener('click', () => {
+        document.querySelector(`#${urlInputAvatar}`).value = urlAvatar
+  
+        // ***** AQUÍ HAY QUE ACTUALIZAR LA BASE DE DATOS CON LA IMAGEN
+        console.log('Actualizando base de datos: ' + user_id)
+        adminVista.script()
+      })
     }
   }
   
