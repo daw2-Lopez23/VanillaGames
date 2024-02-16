@@ -1,5 +1,5 @@
 export default {
-    template: // html
+    template:
     `
   <div class="container">
     <h1 class="mt-5 text-center fw-bold" style="font-size: 100px">
