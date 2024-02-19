@@ -39,5 +39,43 @@ export default {
         </div>
     </div>
     
-</div>`
+</div>`,
+script: () => {
+    // Boton volver atras
+    document.querySelector('#botonVolver').addEventListener('click', () => {
+      window.history.back()
+    })
+
+    // Validación bootstrap
+    // Capturamos el formulario en una variable
+    const formulario = document.querySelector('#formularioNuevoPRoyecto')
+    // Detectamos su evento submit (enviar)
+    formulario.addEventListener('submit', (event) => {
+      // Detenemos el evento enviar (submit)
+      event.preventDefault()
+      event.stopPropagation()
+      // Comprobamos si el formulario no valida
+      if (!formulario.checkValidity()) {
+      // Y añadimos la clase 'was-validate' para que se muestren los mensajes
+        formulario.classList.add('was-validated')
+      } else {
+        enviaDatos()
+      }
+    })
+    
+    // Función para enviar datos a la base de datos
+    function enviaDatos () {
+      const proyectoEditado = {
+        imagen: document.querySelector('#urlImagen').value,
+        nombre: document.querySelector('#nombreJuego').value,
+        descripcion: document.querySelector('#descripcion').value,
+        fecha: document.querySelector('#fecha').value,
+        estado: document.querySelector('#estado').value,
+        enlace: document.querySelector('#enlace').value,
+        repositorio: document.querySelector('#repositorio').value
+      }
+      alert('Enviando proyecto a la base de datos')
+      console.log('Enviando a la base de datos ', proyectoEditado)
+    }
+  }
 }
