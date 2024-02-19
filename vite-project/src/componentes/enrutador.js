@@ -1,17 +1,16 @@
 
 export const enrutador = {
-    rutas: {
-      home: import('../vistas/homeVista.js'),
-      // Usuarios
-      admin: import('../vistas/adminVista.js'),
-      registro: import('../vistas/registroVista.js'),
-      login: import('../vistas/loginVista.js'),
-      // Proyectos
-      proyectos: import('../vistas/proyectosVista.js'),
-      proyectoNuevo: import('../vistas/proyectoNuevoVista.js'),
-      proyectoEditar: import('../vistas/proyectoEditarVista.js'),
-      proyectoDetalle: import('../vistas/proyectoDetalleVista.js'),
-    },
+  rutas: {
+    home: import('@views/homeVista.js'),
+    admin: import('@views/adminVista.js'),
+    registro: import('@views/registroVista.js'),
+    login: import('@views/loginVista.js'),
+    proyectos: import('@views/proyectosVista.js'),
+    proyectoNuevo: import('@views/proyectoNuevoVista.js'),
+    proyectoEditar: import('@views/proyectoEditarVista.js'),
+    proyectoDetalle: import('@views/proyectoDetalleVista.js'),
+    404: import('@views/404.js')
+  },
     router: async () => {
         // Capturamos el hash # que ha cambiado en la url
         const pathCompleto = window.location.hash
